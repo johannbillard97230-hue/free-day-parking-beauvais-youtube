@@ -753,6 +753,47 @@ a { color: var(--color-ink-soft); }
   color: var(--color-text-soft);
 }
 
+
+/* Troncature des avis longs + bouton "Lire la suite" */
+.review-text.is-clamped { position: relative; }
+.review-text.is-clamped p {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.review-text.is-clamped::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2.2em;
+  background: linear-gradient(180deg, rgba(255,255,255,0), #ffffff 90%);
+  pointer-events: none;
+  transition: opacity .2s var(--ease);
+}
+.review-card.is-expanded .review-text.is-clamped p {
+  display: block;
+  overflow: visible;
+}
+.review-card.is-expanded .review-text.is-clamped::after { opacity: 0; }
+.review-toggle {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: -6px;
+  padding: 4px 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--color-accent-strong);
+  cursor: pointer;
+}
+.review-toggle:hover { text-decoration: underline; }
+.review-toggle .review-toggle-less { color: var(--color-text-soft); }
+
 /* ---------- 14. FAQ ---------- */
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
 .faq-item {

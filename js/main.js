@@ -105,15 +105,24 @@
   /* ---------- 3b. Avis Google réels (depuis data/reviews.js) ---------- */
   var STAR_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2Z"/></svg>';
 
+  var REVIEW_CLAMP_THRESHOLD = 280; // caractères : au-delà, bouton "Lire la suite"
+
   function renderReviews() {
     var slot = document.querySelector("[data-reviews-slot]");
     if (!slot || typeof GOOGLE_REVIEWS === "undefined") { return; }
     var stars = new Array(6).join(STAR_SVG); // 5 étoiles
-    var cards = GOOGLE_REVIEWS.map(function (review) {
+    var cards = GOOGLE_REVIEWS.map(function (review, index) {
+      var isLong = review.text.length > REVIEW_CLAMP_THRESHOLD;
+      var textId = "review-text-" + index;
       return (
         '<figure class="review-card">' +
           '<div class="review-stars" role="img" aria-label="Avis noté 5 étoiles sur 5">' + stars + '</div>' +
-          '<blockquote class="review-text"><p>«&nbsp;' + escapeHtml(review.text) + '&nbsp;»</p></blockquote>' +
+          '<blockquote class="review-text' + (isLong ? " is-clamped" : "") + '"' + (isLong ? ' id="' + textId + '"' : '') + '><p>«&nbsp;' + escapeHtml(review.text) + '&nbsp;»</p></blockquote>' +
+          (isLong ?
+            '<button type="button" class="review-toggle" data-review-toggle aria-expanded="false" aria-controls="' + textId + '">' +
+              '<span class="review-toggle-more">Lire la suite</span>' +
+              '<span class="review-toggle-less" hidden>Réduire</span>' +
+            '</button>' : '') +
           '<figcaption class="review-meta">' +
             '<span class="review-author">' + escapeHtml(review.author) + '</span>' +
             '<span class="review-date">' + escapeHtml(review.time) + ' &middot; Visité en ' + escapeHtml(review.visited) + '</span>' +
@@ -127,6 +136,17 @@
     });
     slot.classList.remove("reviews-placeholder");
     slot.innerHTML = cards.join("");
+
+    // Bascule "Lire la suite" / "Réduire" (délégation d'événement)
+    slot.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-review-toggle]");
+      if (!button) { return; }
+      var card = button.closest(".review-card");
+      var expanded = card.classList.toggle("is-expanded");
+      button.setAttribute("aria-expanded", String(expanded));
+      button.querySelector(".review-toggle-more").hidden = expanded;
+      button.querySelector(".review-toggle-less").hidden = !expanded;
+    });
   }
 
   /* ---------- 4. Logo officiel (avec repli texte propre) ---------- */
