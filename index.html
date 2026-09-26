@@ -63,6 +63,12 @@
     },
     "geo": { "@type": "GeoCoordinates", "latitude": 49.4215076, "longitude": 2.0752858 },
     "hasMap": "https://www.google.com/maps/place/FreeDayParkingBeauvais",
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Location de place de parking avec navette aéroport",
@@ -177,61 +183,9 @@
             </li>
           </ul>
         </div>
-
-        <!-- Illustration vectorielle stylisée (aucune photo simulée).
-             Remplacer par une vraie photo du parking si souhaité :
-             assets/images/README.md -->
-        <div class="hero-visual" data-reveal aria-hidden="true">
-          <svg viewBox="0 0 520 420" class="hero-svg" role="img" aria-label="Illustration : une voiture est garée près d'un panneau parking, une navette rejoint l'aéroport et un avion décolle">
-            <defs>
-              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#0b2545"/>
-                <stop offset=".55" stop-color="#123a63"/>
-                <stop offset="1" stop-color="#1b5a8a"/>
-              </linearGradient>
-              <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#ffd166"/>
-                <stop offset="1" stop-color="#f59e0b"/>
-              </linearGradient>
-            </defs>
-            <rect width="520" height="420" rx="24" fill="url(#sky)"/>
-            <circle cx="420" cy="86" r="44" fill="url(#sun)" opacity=".9"/>
-            <g stroke="#ffffff" stroke-opacity=".28" stroke-width="3" stroke-linecap="round">
-              <path d="M60 96h58M40 128h36M300 66h44"/>
-            </g>
-            <!-- piste -->
-            <path d="M0 300 L520 252 L520 420 L0 420 Z" fill="#0d2c4d"/>
-            <path d="M0 330 L520 286" stroke="#f8fafc" stroke-opacity=".5" stroke-width="6" stroke-dasharray="34 26" fill="none"/>
-            <!-- panneau parking -->
-            <g transform="translate(120 120)">
-              <rect x="-6" y="58" width="12" height="120" rx="4" fill="#94a3b8"/>
-              <rect x="-62" y="-72" width="124" height="124" rx="20" fill="#f8fafc"/>
-              <rect x="-62" y="-72" width="124" height="124" rx="20" fill="none" stroke="#f59e0b" stroke-width="8"/>
-              <text x="0" y="22" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="86" fill="#0b2545">P</text>
-            </g>
-            <!-- navette -->
-            <g transform="translate(310 268)">
-              <rect x="0" y="0" width="150" height="58" rx="14" fill="#f59e0b"/>
-              <rect x="10" y="9" width="130" height="24" rx="7" fill="#fff7e0"/>
-              <circle cx="36" cy="60" r="13" fill="#0b2545"/><circle cx="36" cy="60" r="5" fill="#94a3b8"/>
-              <circle cx="116" cy="60" r="13" fill="#0b2545"/><circle cx="116" cy="60" r="5" fill="#94a3b8"/>
-            </g>
-            <!-- avion -->
-            <g transform="translate(196 74) rotate(18)">
-              <path d="M0 14 L86 0 C96 -2 100 8 92 14 L66 30 L70 44 C71 50 64 54 59 50 L46 36 L24 46 L28 56 C30 62 24 66 19 62 L6 48 C0 44 -2 22 0 14 Z" fill="#e2e8f0"/>
-            </g>
-            <!-- voiture -->
-            <g transform="translate(66 296)">
-              <path d="M8 44 C10 26 30 18 58 18 C86 18 104 26 110 44 L128 48 C136 50 140 56 140 62 L140 72 C140 78 136 82 130 82 L14 82 C8 82 4 78 4 72 L4 56 C4 50 6 46 8 44 Z" fill="#38bdf8"/>
-              <path d="M34 26 L84 26 C94 26 102 34 104 44 L26 44 C26 34 28 26 34 26 Z" fill="#dbeafe"/>
-              <circle cx="36" cy="84" r="14" fill="#0b2545"/><circle cx="36" cy="84" r="6" fill="#cbd5e1"/>
-              <circle cx="106" cy="84" r="14" fill="#0b2545"/><circle cx="106" cy="84" r="6" fill="#cbd5e1"/>
-            </g>
-          </svg>
-          <div class="hero-badge" aria-hidden="true">
-            <span class="hero-badge-price">25&nbsp;€</span>
-            <span class="hero-badge-label">7 jours · navette incluse</span>
-          </div>
+        <div class="hero-visual" data-reveal>
+          <!-- Image réelle fournie par le propriétaire (visuel Free Day Parking Beauvais). -->
+          <img src="assets/images/hero-parking-v2.webp" alt="Free Day Parking Beauvais — parking près de l'aéroport de Beauvais : 25 € pour 7 jours avec navette aller-retour, 97 avis 5 étoiles sur 100, places couvertes et extérieures sécurisées" class="hero-img" width="1600" height="901" loading="eager" fetchpriority="high" decoding="async">
         </div>
       </div>
     </section>

@@ -333,35 +333,13 @@ a { color: var(--color-ink-soft); }
 .hero-trust svg { color: var(--color-success); flex: none; }
 
 .hero-visual { position: relative; }
-.hero-svg {
+.hero-img {
   width: 100%;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-}
-.hero-badge {
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 14px 20px;
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, .95);
-  backdrop-filter: blur(6px);
-  box-shadow: var(--shadow-md);
-}
-.hero-badge-price {
-  font-size: 1.9rem;
-  font-weight: 800;
-  color: var(--color-ink);
-  letter-spacing: -.03em;
-  line-height: 1;
-}
-.hero-badge-label {
-  font-size: .82rem;
-  font-weight: 600;
-  color: var(--color-text-soft);
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  background: var(--color-paper);
 }
 
 /* ---------- 7. Marquee ---------- */
