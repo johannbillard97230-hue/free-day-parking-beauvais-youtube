@@ -101,6 +101,34 @@
       .replace(/"/g, "&quot;");
   }
 
+
+  /* ---------- 3b. Avis Google réels (depuis data/reviews.js) ---------- */
+  var STAR_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2Z"/></svg>';
+
+  function renderReviews() {
+    var slot = document.querySelector("[data-reviews-slot]");
+    if (!slot || typeof GOOGLE_REVIEWS === "undefined") { return; }
+    var stars = new Array(6).join(STAR_SVG); // 5 étoiles
+    var cards = GOOGLE_REVIEWS.map(function (review) {
+      return (
+        '<figure class="review-card">' +
+          '<div class="review-stars" role="img" aria-label="Avis noté 5 étoiles sur 5">' + stars + '</div>' +
+          '<blockquote class="review-text"><p>«&nbsp;' + escapeHtml(review.text) + '&nbsp;»</p></blockquote>' +
+          '<figcaption class="review-meta">' +
+            '<span class="review-author">' + escapeHtml(review.author) + '</span>' +
+            '<span class="review-date">' + escapeHtml(review.time) + ' &middot; Visité en ' + escapeHtml(review.visited) + '</span>' +
+            '<span class="review-source">' +
+              '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.35 11.1H12v3.9h5.35c-.5 2.4-2.6 3.9-5.35 3.9a5.9 5.9 0 1 1 0-11.8c1.5 0 2.85.55 3.9 1.45l2.85-2.85A9.9 9.9 0 1 0 12 21.9c5.7 0 9.5-4 9.5-9.65 0-.4-.05-.8-.15-1.15Z"/></svg>' +
+              'Avis Google' +
+            '</span>' +
+          '</figcaption>' +
+        '</figure>'
+      );
+    });
+    slot.classList.remove("reviews-placeholder");
+    slot.innerHTML = cards.join("");
+  }
+
   /* ---------- 4. Logo officiel (avec repli texte propre) ---------- */
   function setupLogoFallback() {
     var logo = document.querySelector("[data-logo]");
@@ -191,6 +219,7 @@
     applyReservationLinks();
     applyGoogleReviewsLink();
     renderVideos();
+    renderReviews();
     setupLogoFallback();
     setupHeader();
     setupReveal();

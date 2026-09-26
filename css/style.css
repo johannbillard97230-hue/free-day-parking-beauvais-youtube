@@ -689,6 +689,70 @@ a { color: var(--color-ink-soft); }
   color: var(--color-text-soft);
 }
 
+
+/* ---------- 13b. Avis Google ---------- */
+.rating-badge {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0 14px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-sm);
+}
+.rating-badge-stars {
+  color: var(--color-accent);
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  line-height: 1;
+}
+.rating-badge-text {
+  font-weight: 700;
+  color: var(--color-ink);
+  font-size: .98rem;
+  text-align: left;
+}
+.reviews-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  margin: 26px 0 8px;
+  text-align: left;
+}
+.reviews-grid.reviews-placeholder { border: none; padding: 0; }
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 24px;
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease);
+}
+.review-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.review-stars { display: flex; gap: 2px; color: var(--color-accent); }
+.review-text { margin: 0; flex: 1; }
+.review-text p { margin: 0; font-size: .95rem; color: var(--color-text); }
+.review-meta { display: flex; flex-direction: column; gap: 3px; }
+.review-author { font-weight: 700; color: var(--color-ink); font-size: .95rem; }
+.review-date { font-size: .82rem; color: var(--color-text-soft); }
+.review-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--color-text-soft);
+}
+
 /* ---------- 14. FAQ ---------- */
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
 .faq-item {
