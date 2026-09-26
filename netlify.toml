@@ -1,0 +1,45 @@
+# ============================================================
+# FREE DAY PARKING BEAUVAIS — netlify.toml
+# Site statique : aucun build nécessaire.
+# Branch de production : main
+# ============================================================
+
+[build]
+  publish = "."
+  command = ""
+
+# Sécurité et cache : les assets statiques sont mis en cache 1 an,
+# le HTML n'est jamais mis en cache (déploiements instantanés).
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Redirections propres : /faq, /videos, etc. (optionnel, par commodité)
+[[redirects]]
+  from = "/youtube"
+  to = "/#videos"
+  status = 301
+
+[[redirects]]
+  from = "/reservation"
+  to = "/#offre"
+  status = 301

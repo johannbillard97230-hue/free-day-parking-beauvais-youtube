@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================
+     Sitemap — Free Day Parking Beauvais
+     L'URL du locataire utilise le domaine officiel. Lors du test
+     sur le sous-domaine Netlify, remplacer par l'URL Netlify
+     (voir README.md, étape « Tester avant migration »).
+     ============================================================ -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.freedayparkingbeauvais.com/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
